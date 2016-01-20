@@ -3,8 +3,8 @@
 Quick instructions:
 
 ```bash
-CID=$(docker run -d --privileged -p 1194:1194/udp -p 443:443/tcp umputun/openvpn)
-docker run -t -i -p 8080:8080 --volumes-from $CID umputun/openvpn serveconfig
+CID=$(docker run -d --privileged -p 1194:1194/udp -p 443:443/tcp umputun/dockvpn)
+docker run -t -i -p 8080:8080 --volumes-from $CID umputun/dockvpn serveconfig
 ```
 
 Now download the file located at the indicated URL. You will get a
