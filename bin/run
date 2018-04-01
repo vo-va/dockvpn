@@ -40,6 +40,7 @@ status openvpn-status-443.log
 mssfix 1440
 sndbuf 0;
 rcvbuf 0;
+cipher AES-256-CBC
 EOF
 
 [ -f udp1194.conf ] || cat >udp1194.conf <<EOF
@@ -63,6 +64,7 @@ status openvpn-status-1194.log
 mssfix 1440
 sndbuf 0;
 rcvbuf 0;
+cipher AES-256-CBC
 EOF
 
 MY_IP_ADDR=$(curl -s http://myip.enix.org/REMOTE_ADDR)
@@ -98,6 +100,13 @@ remote $MY_IP_ADDR 1194 udp
 <connection>
 remote $MY_IP_ADDR 443 tcp-client
 </connection>
+sndbuf 0;
+rcvbuf 0;
+cipher AES-256-CBC
+dhcp-option DNS 1.1.1.1
+dhcp-option DNS 1.0.0.1
+script-security 2
+mssfix 1440
 EOF
 
 [ -f client.http ] || cat >client.http <<EOF
